@@ -1,0 +1,36 @@
+﻿@model IEnumerable<VendingMach.Models.Beverage>
+@{
+    ViewBag.Title = "Купить напитки";
+}
+
+<h2>Купить напитки</h2>
+<div class="row container">
+    <div class="input-panel row">
+        <div class="col-md-4">
+            <input type="button" class="btn btn-default" value="1 рубль" onclick='addMoney("1")' />
+        </div>
+        <div class="col-md-4">
+            <input type="button" class="btn btn-default" value="2 рубля" onclick='addMoney("2")' />
+        </div>
+        <div class="col-md-4">
+            <input type="button" class="btn btn-default" value="5 рублей" onclick='addMoney("5")' />
+        </div>
+
+        <div class="balance-panel col-md-3">
+            Баланс:
+        </div>
+        <div class="balance-panel col-md-4">
+            <input type="text" readonly class="balance form-control" id="balance">
+        </div>
+        <div class="balance-panel col-md-5">
+            <input type="button" class="btn btn-default" value="Забрать сдачу" onclick="getDelivery()" />
+        </div>
+    </div>
+    <div id="results">
+        @{Html.RenderAction("ListProducts", "Home");}
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/scripts/balance.js")
+}
